@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'mobile',
     'widget_tweaks',
     'import_export',
-
-
 ]
 
 MIDDLEWARE = [
