@@ -9,11 +9,21 @@ from .models import *
 
 
 
-def index(request):
+def index(request ):
+    
+    slug_samsung='samsung'
+    filterd_brands = Device.objects.filter(brand__slug=slug_samsung)[:10]
+    
     context = {
-        'device' : Device.objects.all() ,
+        'device' : Device.objects.all()[:20] ,
         'spare'  : Spare.objects.all() ,
         'brand'  : Brand.objects.all() ,
+        'filterd': filterd_brands ,
+        'applmob': Device.objects.filter(brand__slug='apple'),
+        'huawmob': Device.objects.filter(brand__slug='huawei'),
+        'oppomob': Device.objects.filter(brand__slug='oppo'),
+        'xiaomob': Device.objects.filter(brand__slug='xiaomi'),
+
             }
     return render(request , 'index.html',context)
 

@@ -9,6 +9,9 @@ from import_export.admin import ImportExportModelAdmin
 class DeviceImportExport(ImportExportModelAdmin):
     pass
 
-@admin.register(Brand)
-class BrandImportExport(ImportExportModelAdmin):
-    pass
+class BrandAdmin(admin.ModelAdmin):
+    list_display = ('slug', 'name')
+
+# Register your models here.
+
+admin.site.register(Brand, BrandAdmin)

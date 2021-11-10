@@ -46,6 +46,7 @@ class Brand(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         super(Brand,self).save(*args, **kwargs)
+        
 class Device(models.Model):
     
     slug_dev = models.SlugField(blank=True, null=True)
@@ -63,20 +64,22 @@ class Device(models.Model):
     buildDev = models.CharField(max_length=500, verbose_name=_("Build"), blank=True, null=True)
     simDev = models.CharField(max_length=500, verbose_name=_("Sim"), blank=True, null=True)
     
-    
     displayTypeDev = models.CharField(max_length=500, verbose_name=_("Screen Type"), blank=True, null=True)
     displaySizeDev = models.CharField(max_length=500, verbose_name=_("Screen Size"), blank=True, null=True)
     displayResDev = models.CharField(max_length=500, verbose_name=_("Screen Resolution"), blank=True, null=True)
+    
     oSDev = models.CharField(max_length=350, verbose_name=_("Android"), blank=True, null=True)
     chipsetDev = models.CharField(max_length=550, verbose_name=_("Chipset"), blank=True, null=True)
     cPUDev = models.CharField(max_length=500, verbose_name=_("CPU"), blank=True, null=True)
     cardSlotDev = models.CharField(max_length=500, verbose_name=_("Card Slot"), blank=True, null=True)
     internalDev = models.CharField(max_length=500, verbose_name=_("Device Storage"), blank=True, null=True)
+    
     mainCameraDev = models.CharField(max_length=500, verbose_name=_("Main Camera"), blank=True, null=True)
     main_camera_featuresDev = models.CharField(max_length=550, verbose_name=_("Features Main Camera"), blank=True, null=True)
     main_camera_videoDev = models.CharField(max_length=550, verbose_name=_("Main Camera Video"), blank=True, null=True)
     selfieCameraDev = models.CharField(max_length=500, verbose_name=_("Selfie Camera"), blank=True, null=True)
     selfie_camera_videoDev = models.CharField(max_length=500, verbose_name=_("Selfie Camera Video"), blank=True, null=True)
+    
     loudspeakerDev = models.CharField(max_length=500, verbose_name=_("Loudspeaker"), blank=True, null=True)
     wlanDev = models.CharField(max_length=500, verbose_name=_("WLAN"), blank=True, null=True)
     bluetoothDev = models.CharField(max_length=500, verbose_name=_("Bluetooth"), blank=True, null=True)
@@ -85,10 +88,12 @@ class Device(models.Model):
     usbDev = models.CharField(max_length=500, verbose_name=_("USB"), blank=True, null=True)
     sensorsDev = models.CharField(max_length=500, verbose_name=_("Sensors"), blank=True, null=True)
     batteryDev = models.CharField(max_length=500, verbose_name=_("Battery Type"), blank=True, null=True)
+    
     priceDev = models.CharField(max_length=500, verbose_name=_("Price"), blank=True, null=True)
-    imageDev = models.ImageField(upload_to='Devices/Devices_Img/', verbose_name=_("Image Device"), blank=True)
-    img_dev_full_1 = models.ImageField(upload_to='Devices/Devices_full_pic/', verbose_name=_("Full Image Device 1"), blank=True)
-    img_dev_full_2 = models.ImageField(upload_to='Devices/Devices_full_pic/', verbose_name=_("Full Image Device 1"), blank=True)
+ 
+    imageDev = models.ImageField(upload_to='Devices/Devices_img/', verbose_name=_("Image Device"), blank=True)
+    img_dev_full_1 = models.ImageField(upload_to='Devices/Devices_full_img/', verbose_name=_("Full Image 1 (or front)"), blank=True)
+    img_dev_full_2 = models.ImageField(upload_to='Devices/Devices_full_img/', verbose_name=_("Full Image 2 (or back)"), blank=True)
     color = models.CharField( max_length=500, verbose_name=_("Color"), blank=True, null=True)
 
     def save(self , *args , **kwargs):
@@ -99,10 +104,8 @@ class Device(models.Model):
     def __str__(self):
         return self.nameDev
 
-
 class Spare(models.Model):
     spare_list = [
-        
             ('CompScreen' , 'CompScreen'),
             ('Lcd' , 'Lcd'),
             ('Touch' , 'Touch'),
@@ -112,8 +115,8 @@ class Spare(models.Model):
             ('Board' , 'Board'),
             ('Battery' , 'Battery'),
             ('BackCamera' , 'BackCamera'),
-            ('SelfieCamera' , 'SelfieCamera'),
-            ('BackGlassCover' , 'BackGlassCover'),
+            ('FCam' , 'SelfieCamera'),
+            ('BCover' , 'BackGlassCover'),
             ('Housing' , 'Housing'),
         ]
 
@@ -145,3 +148,5 @@ class Spare(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         super(Spare,self).save(*args, **kwargs)
+        
+        
