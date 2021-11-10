@@ -38,6 +38,7 @@ class Brand(models.Model):
 
     slug = models.SlugField(blank=True, null=True)
     name = models.CharField( choices=brand_name , max_length=100 , verbose_name=_('Brand Name'))
+    logo = models.ImageField(upload_to='brandslogo', verbose_name=_("Logo Brand"),null=True , blank=True)
     def __str__(self):
         return self.name
     def get_devices_count(self):
@@ -89,6 +90,10 @@ class Device(models.Model):
     sensorsDev = models.CharField(max_length=500, verbose_name=_("Sensors"), blank=True, null=True)
     batteryDev = models.CharField(max_length=500, verbose_name=_("Battery Type"), blank=True, null=True)
     
+    priceDev = models.CharField(max_length=500, verbose_name=_("Price"), blank=True, null=True)
+    priceDev_raya = models.DecimalField( max_digits=5,decimal_places=2, verbose_name=_("Price"), default=0)
+    priceDev = models.CharField(max_length=500, verbose_name=_("Price"), blank=True, null=True)
+    priceDev = models.CharField(max_length=500, verbose_name=_("Price"), blank=True, null=True)
     priceDev = models.CharField(max_length=500, verbose_name=_("Price"), blank=True, null=True)
  
     imageDev = models.ImageField(upload_to='Devices/Devices_img/', verbose_name=_("Image Device"), blank=True)

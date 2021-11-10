@@ -15,7 +15,7 @@ def index(request ):
     filterd_brands = Device.objects.filter(brand__slug=slug_samsung)[:10]
     
     context = {
-        'device' : Device.objects.all()[:20] ,
+        'device' : Device.objects.all()[:40] ,
         'spare'  : Spare.objects.all() ,
         'brand'  : Brand.objects.all() ,
         'filterd': filterd_brands ,

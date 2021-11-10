@@ -2,6 +2,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,14 +15,12 @@
   </head>
   <body>
     <header>
-
         {% include "parts/navbar.html" %}
     </header>
     <main>
             {% block content %}
 
             {% endblock content %}
-
     </main>
 
     <script src="{% static 'js/bootstrap.bundle.min.js' %}" crossorigin="anonymous"></script>

@@ -1,0 +1,31 @@
+<div class="container bg-dark samsung">
+    <div class="row m-0">
+    {% for mob in device %}
+      <div class="col-xs-1 col-sm-4 col-lg-3 col-xl-2" style="max-width: 45%;" >
+        <div class="card my-1">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-12">
+                <small class="">   
+                    <img width="25%" class="img-thumbnail reounded" src="{{ mob.brand.logo.url }}" alt="{{mob.brand}}">
+                         
+                </small>
+              </div>
+              <div class="col-12 mobname text-center">
+                
+                <p class='bold font-16'>{{mob|cut:'Samsung'}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col m-2">
+                <img class='card-img rounded' src="{{ mob.imageDev.url }}" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+</div>

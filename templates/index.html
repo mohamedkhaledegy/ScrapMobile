@@ -2,9 +2,19 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
+<style>
+  .mobname {
+
+  }
+</style>
+
+
 {% block content %}
 
-<section class="main  mt-5">
+
+
+<section class="head-index  mt-5">
   <div class="container py-5 mb-2">
     <div class="card shadow-lg text-center">
       <div class="row">
@@ -29,34 +39,19 @@
 </section>
 
 <section>
-  <div class="container bg-dark samsung">
-    <div class="row">
-    
-    {% for mob in filterd %}
-      <div class="col">
-        <div class="card">
-          <div class="card-header">
-            <div class="row">
-              <div class="col-12">
-                  <small>
-                    <img src="{{% static '' %}}" alt="">
-                  </small>
-                <small class="badge bg-primary" >{{ mob.brand }}</small>
-              </div>
-              <div class="col-12">
-                <h6>{{mob}}</h6>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
+  {% include "index/section-repair.html" %}
+</section>
+<hr>
+<section>
+  {% include "index/section-mobs.html" %}
+</section>
+<hr>
+<section class='main'>
+  <div class="container">
 
-            <img src="{{ mob.imageDev.url }}" alt="">
-          </div>
-        </div>
-      </div>
-    {% endfor %}
-    </div>
   </div>
+
+  
   <div class="container">
     <div class="row">
       {% for dev in device %}
@@ -70,10 +65,12 @@
           </div>
 
           <div class="card-body">
-            {{dev.nameDev}}
+            {{dev|cut:'Apple'}}
             <small>{{dev.brand}}</small>
             
-            <img src="{{ dev.imageDev.url }}" alt="">
+              
+            
+            <img class='' src="{{ dev.imageDev.url }}" alt="">
           </div>
         </div>
       </div>
@@ -81,6 +78,7 @@
     </div>
     <div class="row"></div>
   </div>
+  
 </section>
 
 {% endblock content %}
