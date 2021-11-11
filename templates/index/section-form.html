@@ -12,11 +12,11 @@
                 <p class="">اختر نوع الموبايل</p>
             </div>
             <div class="card-body">
-                <form class="form-control" action="get">
+                <form class="form-control" action="">
                     <div class="row">
-                      <div class="col-4">
+                      <div class="col-sm-12 col-md-4 my-2">
                         <select class="form-select" id="brand" required="">
-                          <option value="">Brand...</option>
+                          <option value="">Brand</option>
                           {% for brd in brand %}
                             <option>{{brd.name}}</option>
                           {% endfor %}
@@ -25,8 +25,8 @@
                           Please select a valid country.
                         </div>
                       </div>
-                      <div class="col-4">
-                        <input type="text" class="form-control" id="firstName" placeholder="Search Mobile ..." value="" required="">
+                      <div class="col-sm-12 col-md-4 my-2">
+                        <input type="text" class="form-control" id="search" placeholder="Search Mobile ..." value="" required="">
                       </div>
                     </div>
                     <div class="row mt-2">
@@ -42,9 +42,9 @@
   <div class="row mt-2">
     <div class="col-3 ">
       <div class="list-group" id="list-tab" role="tablist">
-        <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">اصلاح</a>
-        <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">بيع</a>
-        <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">تبديل</a>
+        <a class="p-2 list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">اصلاح</a>
+        <a class="p-2 list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">بيع</a>
+        <a class="p-2 list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">تبديل</a>
       </div>
     </div>
     <div class="col-9 card">

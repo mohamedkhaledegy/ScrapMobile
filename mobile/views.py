@@ -1,3 +1,4 @@
+from django.db.models.fields import SlugField
 from django.shortcuts import render , get_object_or_404
 from .models import *
 
@@ -20,10 +21,12 @@ def index(request ):
             }
     return render(request , 'index.html',context)
 
-def get_mobile(request , id):
-    
-    
-    return render(request )
+def mobile(request , slug):
+    mob = get_object_or_404(Device , slug_dev=slug)
+    context = {
+        'mobile' : mob ,
+    }
+    return render(request , 'index-mob.html' ,context )
 
 def brand_mobs(request , slug):
     filterd_brands = Device.objects.filter(brand__slug=slug)
