@@ -13,6 +13,21 @@ class Color(models.Model):
     def __str__(self):
         return self.name
  
+class Tag(models.Model):
+    name = models.CharField(max_length=200, null=True)
+    slug = models.SlugField(blank=True, null=True)
+    
+    def __str__(self):
+        return self.name
+    def save(self , *args , **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super(Brand,self).save(*args, **kwargs)
+        
+    def __str__(self):
+        return self.name
+
+
 class Brand(models.Model):
     brand_name = [
             ('Samsung' , 'Samsung'), #1
@@ -34,6 +49,7 @@ class Brand(models.Model):
             ('Asus' , 'Asus'), #17
             ('Motorola' , 'Motorola'),
             ('Acer' , 'Acer'), #19
+            ('Techno' , 'Techno'), #20
         ]
 
     slug = models.SlugField(blank=True, null=True)
@@ -54,8 +70,8 @@ class Device(models.Model):
     brand = models.ForeignKey(Brand, blank=True, null=True, on_delete=models.PROTECT)
     modeldev = models.CharField(max_length=100, blank=True, null=True)
     nameDev = models.CharField(  max_length=320, verbose_name=_("Name"))
-    
-    networkDev = models.CharField(max_length=500, blank=True, null=True, verbose_name=_("Network"))
+
+    networkDev = models.CharField(max_length=500, blank=True, null=True, verbose_name=_("Network")) 
     
     announcedDev = models.CharField(max_length=500, blank=True, null=True, verbose_name=_("Announced"))
     statusDev = models.CharField(max_length=500, blank=True, null=True, verbose_name=_("Status"))
@@ -91,16 +107,20 @@ class Device(models.Model):
     batteryDev = models.CharField(max_length=500, verbose_name=_("Battery Type"), blank=True, null=True)
     
     priceDev = models.CharField(max_length=500, verbose_name=_("Price"), blank=True, null=True)
-    priceDev_raya = models.DecimalField( max_digits=5,decimal_places=2, verbose_name=_("Price"), default=0)
-    priceDev = models.CharField(max_length=500, verbose_name=_("Price"), blank=True, null=True)
-    priceDev = models.CharField(max_length=500, verbose_name=_("Price"), blank=True, null=True)
-    priceDev = models.CharField(max_length=500, verbose_name=_("Price"), blank=True, null=True)
- 
+    priceDev_date = models.DateTimeField(auto_now_add=True, null=True)
+
+    priceDev_raya = models.DecimalField( max_digits=5,decimal_places=2, verbose_name=_("Price On Raya"), default=0)
+    priceDev_raya_date = models.DateTimeField(auto_now_add=True, null=True)
+
+    priceDev_amazon = models.DecimalField( max_digits=5,decimal_places=2, verbose_name=_("Price On Amazon"), default=0)
+    priceDev_amazon_date = models.DateTimeField(auto_now_add=True, null=True)
+
     imageDev = models.ImageField(upload_to='Devices/Devices_img/', verbose_name=_("Image Device"), blank=True)
     img_dev_full_1 = models.ImageField(upload_to='Devices/Devices_full_img/', verbose_name=_("Full Image 1 (or front)"), blank=True)
     img_dev_full_2 = models.ImageField(upload_to='Devices/Devices_full_img/', verbose_name=_("Full Image 2 (or back)"), blank=True)
-    color = models.CharField( max_length=500, verbose_name=_("Color"), blank=True, null=True)
-
+    color = models.CharField(max_length=500,verbose_name=_("Color"), blank=True, null=True)
+    tags = models.ManyToManyField(Tag)
+ 
     def save(self , *args , **kwargs):
         if not self.slug_dev:
             self.slug_dev = slugify(self.nameDev)
@@ -144,7 +164,7 @@ class Spare(models.Model):
     image = models.ImageField( upload_to=('Spare/Spare_img/'), verbose_name=_("Image Spare"), blank=True)
     price  = models.DecimalField(default=00.00,decimal_places=2, max_digits=20,  verbose_name=_("Price"))
     new_or_not = models.BooleanField(default=False,  verbose_name=_("Used Spare"))
-    color = models.ForeignKey( Color ,blank=True, null=True , on_delete=models.CASCADE)
+    color = models.CharField( max_length=200,blank=True, null=True)
 
     def __str__(self):
         return self.name

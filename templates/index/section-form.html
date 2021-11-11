@@ -14,8 +14,24 @@
             <div class="card-body">
                 <form class="form-control" action="get">
                     <div class="row">
+                      <div class="col-4">
+                        <select class="form-select" id="brand" required="">
+                          <option value="">Brand...</option>
+                          {% for brd in brand %}
+                            <option>{{brd.name}}</option>
+                          {% endfor %}
+                        </select>
+                        <div class="invalid-feedback">
+                          Please select a valid country.
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <input type="text" class="form-control" id="firstName" placeholder="Search Mobile ..." value="" required="">
+                      </div>
+                    </div>
+                    <div class="row mt-2">
                       <div class="col">
-                      
+                        <button class="w-100 btn btn-success btn-lg" type="submit">Continue to checkout</button>
                       </div>
                     </div>
                   </form>

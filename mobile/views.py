@@ -16,13 +16,7 @@ def index(request ):
     
     context = {
         'device' : Device.objects.all()[:40] ,
-        'spare'  : Spare.objects.all() ,
         'brand'  : Brand.objects.all() ,
-        'filterd': filterd_brands ,
-        'applmob': Device.objects.filter(brand__slug='apple'),
-        'huawmob': Device.objects.filter(brand__slug='huawei'),
-        'oppomob': Device.objects.filter(brand__slug='oppo'),
-        'xiaomob': Device.objects.filter(brand__slug='xiaomi'),
             }
     return render(request , 'index.html',context)
 
@@ -36,7 +30,7 @@ def brand_mobs(request , slug):
     context = {
             'devs' : filterd_brands ,
         }
-    return render(request , 'pages/mobiles.html' , context)
+    return render(request , 'index.html' , context)
 
 def single_device(request , slug):
     device_detail = get_object_or_404(Device ,slug_dev=slug)
@@ -62,3 +56,8 @@ def brand_sprs(request , slug):
             'devs' : filterd_brands ,
         }
     return render(request , 'pages/spares.html' , context)
+
+
+### لقياس الوقت المستغرق لاى خوارزمية
+##### start_time = time.time()
+##### time_taken = time.time() - start_time
