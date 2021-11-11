@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        {% for brnd in brand  %}
+        <div class="col">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4>{{brnd}}</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <picture>
+                                <img width="25%" class="card-img rounded" src="{{brnd.logo.url}}" alt="{{brnd.slug}}" srcset="">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>

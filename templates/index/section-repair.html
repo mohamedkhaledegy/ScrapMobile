@@ -1,35 +1,72 @@
-<div class="container">
-   <form class="row gy-2 gx-3 align-items-center">
-      <div class="col-auto">
-        <label class="visually-hidden" for="autoSizingInput">Name</label>
-        <input type="text" class="form-control" id="autoSizingInput" placeholder="Jane Doe">
-      </div>
-      <div class="col-auto">
-        <label class="visually-hidden" for="autoSizingInputGroup">Mobile</label>
-        <div class="input-group">
-          <div class="input-group-text">brand</div>
-          <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="Mobile">
+<div class="container shadow-lg " dir="rtl">
+  <div class="row">
+    <div class="col-3 m-2"  style="background-color: #FDFFFC;">
+      <div class="py-3">
+        <div class="bd bd-tabs">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <p>Placeholder content for the tab panel. This one relates to the home tab. Takes you miles high, so high, 'cause she’s got that one international smile. There's a stranger in my bed, there's a pounding in my head. Oh, no. In another life I would make you stay. ‘Cause I, I’m capable of anything. Suiting up for my crowning battle. Used to steal your parents' liquor and climb to the roof. Tone, tan fit and ready, turn it up cause its gettin' heavy. Her love is like a drug. I guess that I forgot I had a choice.</p>
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <p>Placeholder content for the tab panel. This one relates to the profile tab. You got the finest architecture. Passport stamps, she's cosmopolitan. Fine, fresh, fierce, we got it on lock. Never planned that one day I'd be losing you. She eats your heart out. Your kiss is cosmic, every move is magic. I mean the ones, I mean like she's the one. Greetings loved ones let's take a journey. Just own the night like the 4th of July! But you'd rather get wasted.</p>
+            </div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+              <p>Placeholder content for the tab panel. This one relates to the contact tab. Her love is like a drug. All my girls vintage Chanel baby. Got a motel and built a fort out of sheets. 'Cause she's the muse and the artist. (This is how we do) So you wanna play with magic. So just be sure before you give it all to me. I'm walking, I'm walking on air (tonight). Skip the talk, heard it all, time to walk the walk. Catch her if you can. Stinging like a bee I earned my stripes.</p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="col-auto">
-        <label class="visually-hidden" for="autoSizingSelect">Preference</label>
-        <select class="form-select" id="autoSizingSelect">
-          <option selected>Choose...</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
-      </div>
-      <div class="col-auto">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="autoSizingCheck">
-          <label class="form-check-label" for="autoSizingCheck">
-            Remember me
-          </label>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">home</div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">profile</div>
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">contact</div>
         </div>
+          <div>
+            <form method="get" class="form-group">
+              <div class="row  align-self-center">
+              <div class="col-12">
+                <label class="visually-hidden" for="autoSizingSelect">Preference</label>
+                <select class="form-select" id="autoSizingSelect">
+                  <option selected>...اختر</option>
+                  {% for brd in brand %}
+                    <option value='{{brd.id}}'>{{brd.name}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-12">
+                
+                <label class="visually-hidden" for="autoSizingInputGroup">Mobile</label>
+                <div class="input-group">
+                  <div class="input-group-text">Mob</div>
+                  
+                  <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="ابحث عن موبايل ...">
+                </div>
+              </div>
+              
+              <div class="col-6">
+                <button type="submit" class="btn btn-primary">بحث</button>
+              </div>
+              </div>
+            </form>
+          </div>
       </div>
-      <div class="col-auto">
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-   </form>
+    </div>
+    <div class="col-3 m-2"  style="background-color: #FDFFFC;">
+
+    </div>
+    <div class="col-3 m-2" style="background-color: #FDFFFC;">
+
+    </div>
+  </div>
+  
 </div>

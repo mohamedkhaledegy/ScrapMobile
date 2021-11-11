@@ -23,9 +23,13 @@ def index(request ):
         'huawmob': Device.objects.filter(brand__slug='huawei'),
         'oppomob': Device.objects.filter(brand__slug='oppo'),
         'xiaomob': Device.objects.filter(brand__slug='xiaomi'),
-
             }
     return render(request , 'index.html',context)
+
+def get_mobile(request , id):
+    
+    
+    return render(request )
 
 def brand_mobs(request , slug):
     filterd_brands = Device.objects.filter(brand__slug=slug)
