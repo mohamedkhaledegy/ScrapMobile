@@ -16,10 +16,16 @@ def index(request ):
     filterd_brands = Device.objects.filter(brand__slug=slug_samsung)[:10]
     
     context = {
-        'device' : Device.objects.all()[:40] ,
+        'device' : Device.objects.all()[:20] ,
         'brand'  : Brand.objects.all() ,
             }
     return render(request , 'index.html',context)
+
+def sell(request):
+    context = {
+        'devs':Device.objects.all()
+    }
+    return render(request , 'test.html' , context)
 
 def mobile(request , slug):
     mob = get_object_or_404(Device , slug_dev=slug)
