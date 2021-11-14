@@ -1,17 +1,8 @@
-from django.db.models.fields import SlugField
 from django.shortcuts import render , get_object_or_404
 from .models import *
-
-
-
-
 # Create your views here.
 
-
-
-
 def index(request ):
-    
     slug_samsung='samsung'
     filterd_brands = Device.objects.filter(brand__slug=slug_samsung)[:10]
     
@@ -41,6 +32,11 @@ def brand_mobs(request , slug):
         }
     return render(request , 'index.html' , context)
 
+def get_mob(request , slug):
+    device = get_object_or_404(Device , slug_dev=slug)
+    context = { 'dev':device }
+    return render(request , 'devices/device-list.html' , context)
+
 def single_device(request , slug):
     device_detail = get_object_or_404(Device ,slug_dev=slug)
     
@@ -58,14 +54,12 @@ def all_brands(request):
     }
     return render(request , 'pages/brands.html' , context)
 
-
 def brand_sprs(request , slug):
     filterd_brands = Spare.objects.filter(brand__slug=slug)
     context = {
             'devs' : filterd_brands ,
         }
     return render(request , 'pages/spares.html' , context)
-
 
 ### لقياس الوقت المستغرق لاى خوارزمية
 ##### start_time = time.time()

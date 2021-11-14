@@ -5,6 +5,8 @@ from django.db.models.fields.related import ForeignKey
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.utils.text import slugify
+
+from django.urls import reverse
 # Create your models here.
 
 class Color(models.Model):
@@ -125,6 +127,10 @@ class Device(models.Model):
         if not self.slug_dev:
             self.slug_dev = slugify(self.nameDev)
         super(Device,self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("mob", kwargs={"slug": self.slug_dev})
+    
 
     def __str__(self):
         return self.nameDev

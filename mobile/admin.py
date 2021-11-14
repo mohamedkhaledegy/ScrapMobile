@@ -11,7 +11,6 @@ class DeviceImportExport(ImportExportModelAdmin):
 
 class BrandAdmin(admin.ModelAdmin):
     list_display = ('slug', 'name')
-
-# Register your models here.
+    ## العواميد اللى بتظهر فى الادمين داشبورد 
 
 admin.site.register(Brand, BrandAdmin)
