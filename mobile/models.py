@@ -133,8 +133,7 @@ class Device(models.Model):
         super(Device,self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse("mob", kwargs={"slug": self.slug_dev})
-    
+        return reverse("mobile:mob", kwargs={"slug": self.slug_dev})
 
     def __str__(self):
         return self.nameDev
