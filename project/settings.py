@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mobile',
+    'bootstrap4' ,
     #'widget_tweaks',
     'import_export',
     'django_countries',
