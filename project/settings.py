@@ -40,10 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mobile',
-    'widget_tweaks',
+    #'widget_tweaks',
     'import_export',
     'django_countries',
-    'django_filters'
+    'django_filters',
+    
+    
 ]
 
 MIDDLEWARE = [
