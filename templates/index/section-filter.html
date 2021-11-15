@@ -1,0 +1,24 @@
+
+<div class="container mt-5 md-5 py-2 card">
+
+ <div class="row">
+    
+     <div class="col">
+        <p>
+        <form class="d-flex" method="get">
+            {{filterd_devs.form}}
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        </p>
+     </div>
+ </div>
+
+ <div class="row">
+     <div class="col">
+        {% for mobile in devs %}
+          {{mobile}}
+        {% endfor %}
+     </div>
+ </div>
+
+</div>

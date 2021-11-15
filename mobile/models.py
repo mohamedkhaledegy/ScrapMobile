@@ -11,16 +11,19 @@ from django.urls import reverse
 
 class Color(models.Model):
     name = models.CharField(max_length=120, blank=True, null=True )
+    slug = models.SlugField(blank=True, null=True)
 
     def __str__(self):
         return self.name
- 
+    def save(self , *args , **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super(Color,self).save(*args, **kwargs)
+
 class Tag(models.Model):
     name = models.CharField(max_length=200, null=True)
     slug = models.SlugField(blank=True, null=True)
-    
-    def __str__(self):
-        return self.name
+
     def save(self , *args , **kwargs):
         if not self.slug:
             self.slug = slugify(self.name)
@@ -57,14 +60,15 @@ class Brand(models.Model):
     slug = models.SlugField(blank=True, null=True)
     name = models.CharField( choices=brand_name , max_length=100 , verbose_name=_('Brand Name'))
     logo = models.ImageField(upload_to='brandslogo', verbose_name=_("Logo Brand"),null=True , blank=True)
-    def __str__(self):
-        return self.name
+
     def get_devices_count(self):
         return Device.objects.filter(Device__Brand=self).count()
     def save(self , *args , **kwargs):
         if not self.slug:
             self.slug = slugify(self.name)
         super(Brand,self).save(*args, **kwargs)
+    def __str__(self):
+        return self.name
         
 class Device(models.Model):
     
@@ -156,28 +160,27 @@ class Spare(models.Model):
         ('HighCopy' , 'HighCopy' ),
         ('Copy' , 'Copy'),
     ]
-
+    name = models.CharField( max_length=320, verbose_name=_("Name"))
     slug = models.SlugField(blank=True, null=True)
-    brand = models.ForeignKey(Brand,  blank=True, null=True, on_delete=models.CASCADE)
-    model = models.CharField(max_length=200, blank=True, null=True, verbose_name=_("Model"))
-    device_main = models.ForeignKey(Device,related_name="Device_sets", blank=True, null=True, on_delete=models.CASCADE)
+    brand = models.ForeignKey(Brand,  blank=True, null=True, on_delete=models.PROTECT)
+    device_main = models.ForeignKey(Device,related_name="Device_sets", blank=True, null=True, on_delete=models.PROTECT)
     device_same = models.ManyToManyField(Device, verbose_name=_("Work For Mobiles"))
     category = models.CharField( choices=spare_list , max_length=50, blank=True, null=True)
-    name = models.CharField( max_length=320, verbose_name=_("Name"))
     quality = models.CharField( choices=spare_quality , max_length=50, blank=True, null=True)
-    warranty = models.IntegerField(default=0,  verbose_name=_("Warranty"))
+    warranty = models.IntegerField(default=1,  verbose_name=_("Warranty"))
     code = models.CharField(max_length=320 , blank=True , null=True, verbose_name=_("Code"))
     image = models.ImageField( upload_to=('Spare/Spare_img/'), verbose_name=_("Image Spare"), blank=True)
     price  = models.DecimalField(default=00.00,decimal_places=2, max_digits=20,  verbose_name=_("Price"))
-    new_or_not = models.BooleanField(default=False,  verbose_name=_("Used Spare"))
+    new_or_not = models.BooleanField(default=True,  verbose_name=_("New"))
     color = models.CharField( max_length=200,blank=True, null=True)
+    model = models.CharField(max_length=200, blank=True, null=True, verbose_name=_("Model"))
+    active = models.BooleanField(default=False,  verbose_name=_("Active"))
 
-    def __str__(self):
-        return self.name
-    
+
+
     def save(self , *args , **kwargs):
         if not self.slug:
             self.slug = slugify(self.name)
         super(Spare,self).save(*args, **kwargs)
-        
-        
+    def __str__(self):
+        return self.name

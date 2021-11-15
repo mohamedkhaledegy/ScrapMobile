@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="{% static 'css/fonts/all.css' %}">
 
     <title>Hello, world!</title>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
 
 <style>
@@ -41,5 +44,10 @@
     <script src="{% static 'js/solid.js' %}" crossorigin="anonymous"></script>
     <script src="{% static 'js/popper.min.js' %}" crossorigin="anonymous"></script>
     <script src="{% static 'js/bootstrap.min.js' %}" crossorigin="anonymous"></script>
+
+{% block javascript %}
+  
+{% endblock javascript %}
+  
   </body>
 </html>

@@ -14,3 +14,12 @@ class BrandAdmin(admin.ModelAdmin):
     ## العواميد اللى بتظهر فى الادمين داشبورد 
 
 admin.site.register(Brand, BrandAdmin)
+
+
+class SpareAdmin(admin.ModelAdmin):
+    list_display = ('name', 'brand')
+    ## العواميد اللى بتظهر فى الادمين داشبورد 
+
+@admin.register(Spare)
+class SpareImportExport(ImportExportModelAdmin):
+    pass

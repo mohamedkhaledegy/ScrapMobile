@@ -1,16 +1,41 @@
 from django.shortcuts import render , get_object_or_404
 from .models import *
+from .filters import *
+
 # Create your views here.
 
 def index(request ):
-    slug_samsung='samsung'
-    filterd_brands = Device.objects.filter(brand__slug=slug_samsung)[:10]
-    
+    #slug_samsung='samsung'
+    #filterd_brands = Device.objects.filter(brand__slug=slug_samsung)[:10]
+    devices = Device.objects.all()
+    filterd_brands = DeviceFilter(request.GET , queryset=devices)
+    devices = filterd_brands.qs
     context = {
-        'device' : Device.objects.all()[:20] ,
+        'devs' : devices ,
         'brand'  : Brand.objects.all() ,
+        'filterd_devs' : filterd_brands ,
             }
     return render(request , 'index.html',context)
+
+def brand_mobs(request , slug):
+    
+    devices = Device.objects.all()
+    filterd_brands = DeviceFilter(request.GET , queryset=devices)
+
+    print(filterd_brands)
+    
+    context = {
+            'devs' : devices ,
+            'filter' : filterd_brands ,
+            'slug' : slug ,
+        }
+        
+    return render(request , 'pages/brand-mobiles-list.html' , context)
+
+def validate_devnames(request):
+    devs = request.GET.get('devs')
+    is_taken = Device.objects.filter()
+    pass
 
 def sell(request):
     context = {
@@ -25,12 +50,18 @@ def mobile(request , slug):
     }
     return render(request , 'index-mob.html' ,context )
 
-def brand_mobs(request , slug):
-    filterd_brands = Device.objects.filter(brand__slug=slug)
+
+def about (request):
     context = {
-            'devs' : filterd_brands ,
-        }
-    return render(request , 'index.html' , context)
+        'devs':Device.objects.all()
+    }
+    return render(request , 'pages/about.html' , context)
+
+
+
+
+
+
 
 def get_mob(request , slug):
     device = get_object_or_404(Device , slug_dev=slug)

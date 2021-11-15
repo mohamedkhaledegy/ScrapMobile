@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+        
+<section class='mt-5 md-5'>
+    <div class="container">
+        <div class="row">
+            <h1 class='text-center'>{{slug}}</h1>
+        </div>
+    </div>
+    <!--
+    {% include "devices/filter.html" %}
+    -->
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <h4>Device</h4>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form class="form-inline my-2" method="get">
+                    {{filter.form}}
+                    <button type="submit" class="btn btn-outline-primary"></button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row">
+                <div class="col-md">
+                    <div class="card card-body">
+                        <h5>Products</h5>
+                    </div>
+                    <div class="card card-body">
+                        <table class="table">
+                            <tr>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                            </tr>
+    
+                            {% for i in devs %}
+                                <tr>
+                                    <td>{{i.name}}</td>
+                                    <td>{{i.brand}}</td>
+                                    <td>{{i.priceDev}}</td>
+                                </tr>
+                            {% endfor %}
+                            
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+

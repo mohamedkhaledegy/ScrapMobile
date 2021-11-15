@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'import_export',
     'django_countries',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
