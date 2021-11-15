@@ -4,16 +4,18 @@ from .filters import *
 
 # Create your views here.
 
-def index(request ):
+def index(request):
     #slug_samsung='samsung'
     #filterd_brands = Device.objects.filter(brand__slug=slug_samsung)[:10]
     devices = Device.objects.all()
-    filterd_brands = DeviceFilter(request.GET , queryset=devices)
+    filterd_brands = Device2Filter(request.GET , queryset=devices)
     devices = filterd_brands.qs
+    devices_count = devices.count()
     context = {
         'devs' : devices ,
         'brand'  : Brand.objects.all() ,
-        'filterd_devs' : filterd_brands ,
+        'filterd_devs' : filterd_brands , 
+        'devs_count' : devices_count ,
             }
     return render(request , 'index.html',context)
 
