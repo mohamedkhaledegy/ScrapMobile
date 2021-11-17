@@ -8,7 +8,10 @@ def index(request):
     #slug_samsung='samsung'
     #filterd_brands = Device.objects.filter(brand__slug=slug_samsung)[:10]
     devices = Device.objects.all()
-    filterd_brands = Device2Filter(request.GET , queryset=devices)
+    if request.GET:
+        filterd_brands = Device2Filter(request.GET , queryset=devices)
+    else:
+        filterd_brands = Device2Filter( queryset=devices)
     devices = filterd_brands.qs
     devices_count = devices.count()
     context = {
@@ -23,9 +26,7 @@ def brand_mobs(request , slug):
     
     devices = Device.objects.all()
     filterd_brands = DeviceFilter(request.GET , queryset=devices)
-
-    print(filterd_brands)
-    
+    print(filterd_brands)    
     context = {
             'devs' : devices ,
             'filter' : filterd_brands ,

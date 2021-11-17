@@ -22,22 +22,21 @@
 <div class="container mt-5 md-5 py-2 card">
 
   <div class="row"> 
-     <div class="col-8">
+     <div class="col-12">
 
         <form class="form-inline" method="GET">
           
             <div class="row">
+              
+                {% bootstrap_field filterd_devs.form.nameDev field_class='my-2 mx-3' show_label=False placeholder='Enter Mobile Name' %}
+        
+                {% bootstrap_field filterd_devs.form.brand field_class='my-2 mx-3' show_label=False placeholder='Brand' %}
+
               <div class="col-12">
-                {% bootstrap_field filterd_devs.form.nameDev show_label=False placeholder='Enter Mobile Name' %}
+                {% bootstrap_field filterd_devs.form.model field_class='col-4 my-2 mx-3' show_label=False placeholder='Or Mobile Model' %}
               </div>
               <div class="col-12">
-                {% bootstrap_field filterd_devs.form.brand show_label=False placeholder='Brand' %}
-              </div>
-              <div class="col-12">
-                {% bootstrap_field filterd_devs.form.model show_label=False placeholder='Or Mobile Model' %}
-              </div>
-              <div class="col-12">
-                {% bootstrap_field filterd_devs.form.model show_label=False %}
+                {% bootstrap_field filterd_devs.form.model field_class='col-4 my-2 mx-3' show_label=False %}
               </div>  
             </div>
           <div class="col-4 d-block m-auto">
