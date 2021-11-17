@@ -1,0 +1,232 @@
+<div class="tab-pane fade active show" id="specifications" role="tabpanel" aria-labelledby="specifications-tab">
+    <div class="row">
+      <div class="col">
+        <div class="row">
+          <div class="accordion" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                  <div class="row">
+                    <div class="col">
+                      <h2 class="mb-0">
+                      <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Network 
+                      </button>
+                      </h2>
+                    </div>
+                    <div class="col align-content-center">
+                      <p class="my-2">
+                        {{mobile.networkDev}}</p>
+                    </div>
+                  </div>
+                </h2>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    LAUNCH
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseTwo" class="collapse show " aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body mx-5">
+                  <div class="">
+                    <strong>Announced</strong> : {{mobile.announcedDev}}
+                    <hr>
+                     
+                    <strong>Status</strong>: {{mobile.statusDev}}
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+
+            <!-- BODY -->
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    BODY
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body mx-5">
+                  
+                  <strong>Dimensions</strong> : {{mobile.dimensionsDev}}
+                  <hr>
+                  <strong>Weight</strong> : {{mobile.wightDev}}
+                  <hr>
+                  <strong>Build</strong> : {{mobile.buildDev}}
+                  <hr>
+                  <strong>SIM</strong> : {{mobile.simDev}}
+                  <hr>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Display -->
+            <div class="card">
+              <div class="card-header" id="headingdisplay">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapsedisplay" aria-expanded="false" aria-controls="collapsedisplay">
+                    Display
+                  </button>
+                </h2>
+              </div>
+              <div id="collapsedisplay" class="collapse" aria-labelledby="headingdisplay" data-parent="#accordionExample">
+                <div class="card-body mx-5">
+                  
+                  <strong>Type</strong> : {{mobile.displayTypeDev}}
+                  <hr>
+                  <strong>Size</strong> : {{mobile.displaySizeDev}}
+                  <hr>
+                  <strong>Resolution</strong> : {{mobile.displayResDev}}
+                  
+                </div>
+              </div>
+            </div>
+
+            <!-- PLATFORM -->
+            <div class="card">
+              <div class="card-header" id="headingbody">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapsebody" aria-expanded="false" aria-controls="collapsebody">
+                    PLATFORM
+                  </button>
+                </h2>
+              </div>
+              <div id="collapsebody" class="collapse" aria-labelledby="headingbody" data-parent="#accordionExample">
+                <div class="card-body mx-5">
+                  
+                  <strong>OS</strong> : {{mobile.oSDev}}
+                  <hr>
+                  <strong>Chipset</strong> : {{mobile.chipsetDev}}
+                  <hr>
+                  <strong>CPU</strong> : {{mobile.cPUDev}}
+                  <hr>
+                  <strong>GPU</strong> : .....
+                  <hr>
+                </div>
+              </div>
+            </div>
+
+            <!-- MEMORY -->
+            <div class="card">
+              <div class="card-header" id="headingmemory">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapsememory" aria-expanded="false" aria-controls="collapsememory">
+                    MEMORY
+                  </button>
+                </h2>
+              </div>
+              <div id="collapsememory" class="collapse" aria-labelledby="headingmemory" data-parent="#accordionExample">
+                <div class="card-body mx-5">
+                  
+                  <strong>Card slot</strong> : {{mobile.cardSlotDev}}
+                  <hr>
+                  <strong>Internal</strong> : {{mobile.internalDev}}
+                  
+                </div>
+              </div>
+            </div>
+
+            <!-- MAIN CAMERA -->
+            <div class="card">
+              <div class="card-header" id="headingcam">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapsecam" aria-expanded="false" aria-controls="collapsecam">
+                    MAIN CAMERA
+                  </button>
+                </h2>
+              </div>
+              <div id="collapsecam" class="collapse" aria-labelledby="headingcam" data-parent="#accordionExample">
+                <div class="card-body mx-5">
+                  
+                  <strong>Main</strong> : {{mobile.mainCameraDev}}
+                  <hr>
+                  <strong>Features</strong> : {{mobile.main_camera_featuresDev}}
+                  <hr>
+                  <strong>Video</strong> : {{mobile.main_camera_videoDev}}
+                  
+                </div>
+              </div>
+            </div>
+
+            <!-- SELFIE CAMERA -->
+            <div class="card">
+              <div class="card-header" id="headingselfie">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseselfie" aria-expanded="false" aria-controls="collapseselfie">
+                    SELFIE CAMERA
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseselfie" class="collapse" aria-labelledby="headingselfie" data-parent="#accordionExample">
+                <div class="card-body mx-5">
+                  
+                  <strong>Features</strong> : {{mobile.selfieCameraDev}}
+                  <hr>
+                  <strong>Video</strong> : {{mobile.selfie_camera_videoDev}}
+                  
+                </div>
+              </div>
+            </div>
+
+            <!-- COMMS -->
+            <div class="card">
+              <div class="card-header" id="headingcomms">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapsecomms" aria-expanded="false" aria-controls="collapsecomms">
+                    COMMS
+                  </button>
+                </h2>
+              </div>
+              <div id="collapsecomms" class="collapse" aria-labelledby="headingcomms" data-parent="#accordionExample">
+                <div class="card-body mx-5">
+                  
+                  <strong>Loudspeaker</strong> : {{mobile.loudspeakerDev}}
+                  <hr>
+                  <strong>Wlan</strong> : {{mobile.wlanDev}}
+                  <hr>
+                  <strong>Bluetooth</strong> : {{mobile.bluetoothDev}}
+                  <hr>
+                  <strong>NFC</strong> : {{mobile.nfcDev}}
+                  <hr>
+                  <strong>Radio</strong> : {{mobile.radioDev}}
+                  <hr>
+                  <strong>USB</strong> : {{mobile.usbDev}}
+                  <hr>
+                  
+                  <hr>
+                </div>
+              </div>
+            </div>
+
+            <!-- Battery & Colors -->
+            <div class="card">
+              <div class="card-header" id="headingother">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseother" aria-expanded="false" aria-controls="collapseother">
+                    Battery & Other
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseother" class="collapse" aria-labelledby="headingmother" data-parent="#accordionExample">
+                <div class="card-body mx-5">
+                  
+                  <strong>Sensors</strong> : {{mobile.sensorsDev}}
+                  <hr>
+                  <strong>Battery</strong> : {{mobile.wightDev}}
+                  <hr>
+                  <strong>Color</strong> : {{mobile.color}}
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

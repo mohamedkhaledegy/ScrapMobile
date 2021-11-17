@@ -4,7 +4,6 @@ from . import views
 app_name = 'mobile'
 
 urlpatterns = [
-
     path('',views.index , name='index' ),# الصفحة الرئيسية
     path('device/samsung-s20/sell',views.sell , name='sell' ), #صفحة البيع
     path('device/<slug:slug>/' ,views.mobile , name='mobile'), # صفحة الموبايل

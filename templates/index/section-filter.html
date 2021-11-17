@@ -2,52 +2,69 @@
 {% load bootstrap4 %}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}
+{% bootstrap_form_errors filterd_devs.form %}
+
+<style>
+  a{
+    color:white
+  }
+  a:active {
+    color: #00ff37;
+
+  }
+  a:hover {
+    color: #0dcaf0 ;
+    text-decoration: none;
+  }
+
+</style>
 
 <div class="container mt-5 md-5 py-2 card">
 
- <div class="row">
-    
-     <div class="col">
-        <p>
-        <form class="form-inline d-flex" method="get">
-            <div class="row">
-                <div class="col-12">
-                    <div class="">
-                        <div class="row">
-                            {% bootstrap_field filterd_devs.form.nameDev placeholder='Enter Mobile Model' field_class='col-4' %}
-                            {% bootstrap_field filterd_devs.form.brand field_class='col-4' %}
-                            {% bootstrap_field filterd_devs.form.model field_class='col-4' %}
-                        </div>
-                </div>
-            </div>
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-        </p>
-     </div>
- </div>
+  <div class="row"> 
+     <div class="col-8">
 
- <div class="row">
-     <div class="col">
-        {% for mob in devs %}
-        <div class="col-xs-1 col-sm-4 col-lg-3 col-xl-2" style="max-width: 45%;" >
-          <div class="card my-1">
-            <div class="card-header">
-              <div class="row">
-                <div class="col-12">
-                  
-                  <small class="border border-info">   
-                      <img width="25%" class="m-1 img-thumbnail reounded" src="{{ mob.brand.logo.url }}" alt="{{mob.brand}}">
-                  </small>
-                </div>
-                <div class="col-12 mobname text-center">
-                  <a href="{% url 'mobile:mobile' slug=mob.slug_dev %}"><p class='bold font-16'>{{mob|cut:'Samsung'}}</p></a>
-                </div>
+        <form class="form-inline" method="GET">
+          
+            <div class="row">
+              <div class="col-12">
+                {% bootstrap_field filterd_devs.form.nameDev show_label=False placeholder='Enter Mobile Name' %}
               </div>
+              <div class="col-12">
+                {% bootstrap_field filterd_devs.form.brand show_label=False placeholder='Brand' %}
+              </div>
+              <div class="col-12">
+                {% bootstrap_field filterd_devs.form.model show_label=False placeholder='Or Mobile Model' %}
+              </div>
+              <div class="col-12">
+                {% bootstrap_field filterd_devs.form.model show_label=False %}
+              </div>  
+            </div>
+          <div class="col-4 d-block m-auto">
+
+          </div>
+          <button class="d-block btn btn-outline-success" type="submit">Search</button>
+        </form>
+        
+     </div>
+  </div>
+
+ <div class="row mt-5">
+      {% for mob in devs %}
+        <div class="col-6" >
+          <div class="card">
+            <div class="card-header shadow-lg">
+              <small class="logo text-end">   
+                <span class="badge bg-light text-dark">{{mob.brand.name}}</span>
+              </small>
+                <h6 class="py-1 mt-1 rounded-pill bg-dark text-light text-center">
+                  <a href="{% url 'mobile:mobile' slug=mob.slug_dev %}">
+                    {{mob|cut:'Samsung'}}</a></h6>
             </div>
             <div class="card-body">
               <div class="row">
-                <div class="col m-2">
-                  <img class='card-img rounded' src="{{ mob.imageDev.url }}" alt="">
+                <div class="col">
+                  <img class='card-img-rounded w-100' src="{{ mob.imageDev.url }}" alt="">
                 </div>
               </div>
             </div>
@@ -56,5 +73,3 @@
       {% endfor %}
      </div>
  </div>
-
-</div>

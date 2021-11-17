@@ -94,12 +94,14 @@ class Device(models.Model):
     oSDev = models.CharField(max_length=350, verbose_name=_("Android"), blank=True, null=True)
     chipsetDev = models.CharField(max_length=550, verbose_name=_("Chipset"), blank=True, null=True)
     cPUDev = models.CharField(max_length=500, verbose_name=_("CPU"), blank=True, null=True)
+    
     cardSlotDev = models.CharField(max_length=500, verbose_name=_("Card Slot"), blank=True, null=True)
     internalDev = models.CharField(max_length=500, verbose_name=_("Device Storage"), blank=True, null=True)
     
     mainCameraDev = models.CharField(max_length=500, verbose_name=_("Main Camera"), blank=True, null=True)
     main_camera_featuresDev = models.CharField(max_length=550, verbose_name=_("Features Main Camera"), blank=True, null=True)
     main_camera_videoDev = models.CharField(max_length=550, verbose_name=_("Main Camera Video"), blank=True, null=True)
+    
     selfieCameraDev = models.CharField(max_length=500, verbose_name=_("Selfie Camera"), blank=True, null=True)
     selfie_camera_videoDev = models.CharField(max_length=500, verbose_name=_("Selfie Camera Video"), blank=True, null=True)
     
@@ -126,7 +128,7 @@ class Device(models.Model):
     img_dev_full_2 = models.ImageField(upload_to='Devices/Devices_full_img/', verbose_name=_("Full Image 2 (or back)"), blank=True)
     color = models.CharField(max_length=500,verbose_name=_("Color"), blank=True, null=True)
     tags = models.ManyToManyField(Tag)
- 
+
     def save(self , *args , **kwargs):
         if not self.slug_dev:
             self.slug_dev = slugify(self.nameDev)

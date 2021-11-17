@@ -12,7 +12,7 @@ def index(request):
     devices = filterd_brands.qs
     devices_count = devices.count()
     context = {
-        'devs' : devices ,
+        'devs' : devices[:200] ,
         'brand'  : Brand.objects.all() ,
         'filterd_devs' : filterd_brands , 
         'devs_count' : devices_count ,
@@ -47,8 +47,12 @@ def sell(request):
 
 def mobile(request , slug):
     mob = get_object_or_404(Device , slug_dev=slug)
+    
+    spara = Spare.objects.filter(device_main=mob.id)
+    
     context = {
         'mobile' : mob ,
+        'spr' : spara ,
     }
     return render(request , 'index-mob.html' ,context )
 
