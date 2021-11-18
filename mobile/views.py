@@ -1,6 +1,7 @@
 from django.shortcuts import render , get_object_or_404
 from .models import *
 from .filters import *
+from django_user_agents.utils import get_user_agent
 
 # Create your views here.
 
@@ -21,6 +22,34 @@ def index(request):
         'devs_count' : devices_count ,
             }
     return render(request , 'index.html',context)
+
+def auto_detect(request ):
+    family = None
+    brd = None
+    mobmodel = None
+    if request.user_agent.is_mobile:
+        print(request.user_agent.device)
+        family = request.user_agent.device.family    
+        brd = request.user_agent.device.brand
+        mobmodel = request.user_agent.device.model
+        try:
+            device = Device.objects.filter(modeldev__contains=mobmodel)
+            print(device.count())
+            print(device.all())
+        except:
+            device = 'Not Found In Database'
+    else:
+        print(request.user_agent)
+        device = 'PC'
+    
+
+    context = {
+        'family' : family ,
+        'brand' : brd ,
+        'mobmodel':mobmodel ,
+        'devs' : device ,
+    }
+    return render(request , 'mobily.html' , context)
 
 def brand_mobs(request , slug):
     
@@ -45,12 +74,15 @@ def sell(request):
         'devs':Device.objects.all()
     }
     return render(request , 'test.html' , context)
-
+    
 def mobile(request , slug):
     mob = get_object_or_404(Device , slug_dev=slug)
     
     spara = Spare.objects.filter(device_main=mob.id)
-    
+    if request.user_agent.is_mobile:
+        print(request.user_agent.device)
+    else:
+        print(request.user_agent)
     context = {
         'mobile' : mob ,
         'spr' : spara ,

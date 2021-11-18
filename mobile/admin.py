@@ -23,3 +23,5 @@ class SpareAdmin(admin.ModelAdmin):
 @admin.register(Spare)
 class SpareImportExport(ImportExportModelAdmin):
     pass
+
+admin.site.register(Tag)

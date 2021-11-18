@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+
+                        <p>Mobile Name : {{family}}</p>
+                        <p>Mobile Brand : {{brand}}</p>
+                        <p>Mobile Model : {{mobmodel}}</p>
+                    </div>
+                    <div class="card-body">
+                        {}
+                        {% for dev in device  %}
+                          <h5>Mobile Name In Site : {{devs.nameDev}}</h5>
+                          <h5>Mobile Brand In Site : {{devs.brand}}</h5>
+                          <h5>Mobile Models In Site : {{devs.modeldev}}</h5>
+                          <h5>Mobile Models In Site : {{devs.priceDev}}</h5>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
