@@ -17,8 +17,8 @@ class Profile(models.Model):
     user = models.OneToOneField(User,max_length=500, verbose_name=_("User") , on_delete=models.CASCADE)
     slug = models.SlugField(blank=True , null=True)
     image = models.ImageField(upload_to='profile_img' ,verbose_name=_("Image") ,blank=True, null=True )
-    country = CountryField()
-    address = models.CharField(max_length=500)
+    country = CountryField(blank=True , null=True)
+    address = models.CharField(max_length=500 , blank=True , null=True)
     join_date = models.DateTimeField(verbose_name=_("Join Date"),default=datetime.datetime.now() )
     
     class Meta:

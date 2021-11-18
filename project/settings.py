@@ -45,8 +45,8 @@ INSTALLED_APPS = [
     'import_export',
     'django_countries',
     'django_filters',
-    
-    
+    'django_user_agents',
+
 ]
 
 MIDDLEWARE = [
@@ -57,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_user_agents.middleware.UserAgentMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
