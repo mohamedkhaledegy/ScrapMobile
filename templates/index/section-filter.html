@@ -27,13 +27,8 @@
         <form class="form" method="GET">
             
               <label for="id_brand" name=Brand></label>
-               {% bootstrap_field filterd_devs.form.brand field_class='my-2 mx-3' show_label=False placeholder='Brand' %}
-
-
-               {% bootstrap_field filterd_devs.form.nameDev field_class='my-2 mx-3' show_label=False placeholder='Enter Mobile Name' %}
-        
-               {% bootstrap_field filterd_devs.form.model field_class=' col-sm-6 col-lg-4 my-2 mx-3' show_label=False placeholder='Or Mobile Model' %}
-               <div class="row mt-2">
+               
+              <div class="row mt-2">
                 <button class="d-block btn btn-outline-success w-50 m-auto" type="submit">Search</button>
               </div>
         </form>
@@ -42,28 +37,44 @@
      
     </div>
   </div>
-
- <div class="row row-cols-sm-2 mt-5">
-      {% for mob in devs %}
-        <div class="col-6 col-md-3 col-lg-2" >
-          <div class="card">
-            <div class="card-header shadow-lg p-1 mb-4 bg-white">
-              <small class="logo text-end">   
-                <span class="badge bg-light text-dark">{{mob.brand.name}}</span>
-              </small>
-                <h6 class="py-1 mt-1 rounded bg-dark text-light text-center" >
-                  <a href="{% url 'mobile:mobile' slug=mob.slug_dev %}">
-                    {{mob|cut:'Samsung'}}</a></h6>
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <img class='card-img-rounded w-100' src="{{ mob.imageDev.url }}" alt="">
+<div class="row">
+  <div class="col-3">
+    {% include "index/filter-forma.html" %}
+  </div>
+  <div class="col-9">
+    <div class="setionofcards">
+      <div class="row row-cols-sm-2 mt-5">
+        
+        {% if devs %}
+          {% for mob in devs %}
+            <div class="col-6 col-md-4 col-lg-3" >
+              <div class="card">
+                <div class="card-header shadow-lg p-1 mb-4 bg-white">
+                  <small class="logo text-end">   
+                    <span class="badge bg-light text-dark">{{mob.brand.name}}</span>
+                  </small>
+                    <h6 class="py-1 mt-1 rounded bg-dark text-light text-center" >
+                      <a href="{% url 'mobile:mobile' slug=mob.slug_dev %}">
+                        {{mob|cut:'Samsung'}}</a></h6>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      {% endfor %}
-     </div>
+          {% endfor %}
+          
+        
+        {% endif %}
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+ 
  </div>

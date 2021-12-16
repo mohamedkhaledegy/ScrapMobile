@@ -13,12 +13,12 @@ class Color(models.Model):
     name = models.CharField(max_length=120, blank=True, null=True )
     slug = models.SlugField(blank=True, null=True)
 
-    def __str__(self):
-        return self.name
     def save(self , *args , **kwargs):
         if not self.slug:
             self.slug = slugify(self.name)
         super(Color,self).save(*args, **kwargs)
+    def __str__(self):
+        return self.name
 
 class Tag(models.Model):
     name = models.CharField(max_length=200, null=True)
@@ -61,12 +61,12 @@ class Brand(models.Model):
     name = models.CharField( choices=brand_name , max_length=100 , verbose_name=_('Brand Name'))
     logo = models.ImageField(upload_to='brandslogo', verbose_name=_("Logo Brand"),null=True , blank=True)
 
-    def get_devices_count(self):
-        return Device.objects.filter(Device__Brand=self).count()
     def save(self , *args , **kwargs):
         if not self.slug:
             self.slug = slugify(self.name)
         super(Brand,self).save(*args, **kwargs)
+    def get_devices_count(self):
+        return Device.objects.filter(Device__Brand=self).count()
     def __str__(self):
         return self.name
         
@@ -176,8 +176,9 @@ class Spare(models.Model):
     color = models.CharField( max_length=200,blank=True, null=True)
     model = models.CharField(max_length=200, blank=True, null=True, verbose_name=_("Model"))
     active = models.BooleanField(default=False,  verbose_name=_("Active"))
-
-
+    faults = models.CharField(max_length=500 , blank=True , null=True , verbose_name=_("Faults"))
+    local_or_global = models.BooleanField(default=False,  verbose_name=_("Warranty in Egypt ?"))
+    
 
     def save(self , *args , **kwargs):
         if not self.slug:

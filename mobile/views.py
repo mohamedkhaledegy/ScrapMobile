@@ -3,23 +3,40 @@ from .models import *
 from .filters import *
 from django_user_agents.utils import get_user_agent
 
+
 # Create your views here.
 
 def index(request):
     #slug_samsung='samsung'
     #filterd_brands = Device.objects.filter(brand__slug=slug_samsung)[:10]
-    devices = Device.objects.all()
+    
+    form = DeviceFilter()
+    
+    devices = {
+            Device.objects.all()
+        }
+    if devices :
+        devices = {
+            Device.objects.filter(brand__name='Samsung')[:10],
+            Device.objects.filter(brand__name='Apple')[:10],
+            Device.objects.filter(brand__name='Huawei')[:10],
+            Device.objects.filter(brand__name='Oppo')[:10],
+            Device.objects.filter(brand__name='xiaomi')[:10],
+            Device.objects.filter(brand__name='Realme')[:10],
+        }
     if request.GET:
-        filterd_brands = Device2Filter(request.GET , queryset=devices)
+        filterd_brands = DeviceFilter(request.GET)
     else:
-        filterd_brands = Device2Filter( queryset=devices)
+        filterd_brands = DeviceFilter()
+    devices_count = devices
     devices = filterd_brands.qs
-    devices_count = devices.count()
     context = {
-        'devs' : devices[:200] ,
+        
+        'filter': form,
+        'devs' : devices ,
         'brand'  : Brand.objects.all() ,
         'filterd_devs' : filterd_brands , 
-        'devs_count' : devices_count ,
+        'devs_count' : 50 ,
             }
     return render(request , 'index.html',context)
 
