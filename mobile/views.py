@@ -102,6 +102,30 @@ def about (request):
 
 
 
+def test1(request):
+    
+    samsung_mobs = Device.objects.filter(brand__name='Samsung')
+    apple_mobs = Device.objects.filter(brand__name='Apple')
+    huawei_mobs = Device.objects.filter(brand__name='Huawei')
+    oppo_mobs = Device.objects.filter(brand__name='Oppo')
+    xiaomi_mobs = Device.objects.filter(brand__name='xiaomi')
+    infinix_mobs = Device.objects.filter(brand__name = 'Infinix')
+    lenovo_mobs = Device.objects.filter(brand__name='Lenovo')
+    realme_mobs = Device.objects.filter(brand__name='Realme')
+    honor_mobs = Device.objects.filter(brand__name='Honor')
+    context = {'test1':Device.objects.all()[:50],
+               'samsung_mobs':samsung_mobs ,
+               'apple_mobs':apple_mobs ,
+               'huawei_mobs':huawei_mobs ,
+               'oppo_mobs':oppo_mobs ,
+               'xiaomi_mobs':xiaomi_mobs ,
+               'infinix_mobs':infinix_mobs ,
+               'lenovo_mobs':lenovo_mobs ,
+               'realme_mobs':realme_mobs ,
+               'honor_mobs':honor_mobs ,
+    }
+    return render(request,'pages/test1.html' , context)
+
 def get_mob(request , slug):
     device = get_object_or_404(Device , slug_dev=slug)
     context = { 'dev':device }
