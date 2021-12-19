@@ -1,8 +1,4 @@
 
-{% load bootstrap4 %}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
-{% bootstrap_form_errors filterd_devs.form %}
 
 <style>
   a{
@@ -24,14 +20,6 @@
   <div class="row-cols-sm-2"> 
     <div class="col-12">
       <div class="row">
-        <form class="form" method="GET">
-            
-              <label for="id_brand" name=Brand></label>
-               
-              <div class="row mt-2">
-                <button class="d-block btn btn-outline-success w-50 m-auto" type="submit">Search</button>
-              </div>
-        </form>
       </div>
 
      
@@ -42,16 +30,16 @@
     {% include "index/filter-forma.html" %}
   </div>
   <div class="col-9">
-    <div class="setionofcards">
+    <div class="section_ofcards">
       <div class="row row-cols-sm-2 mt-5">
         
         {% if devs %}
           {% for mob in devs %}
-            <div class="col-6 col-md-4 col-lg-3" >
-              <div class="card">
+            <div class="col-6 col-md-4 col-lg-3" style="padding: inherit;">
+              <div class="card mx-1 my-2">
                 <div class="card-header shadow-lg p-1 mb-4 bg-white">
                   <small class="logo text-end">   
-                    <span class="badge bg-light text-dark">{{mob.brand.name}}</span>
+                    <span class="badge bg-light-outline text-dark">{{mob.brand.name}}<a href="#"></a></span>
                   </small>
                     <h6 class="py-1 mt-1 rounded bg-dark text-light text-center" >
                       <a href="{% url 'mobile:mobile' slug=mob.slug_dev %}">
@@ -60,6 +48,14 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
+                      
+                      {% if mob.imageDev %}
+                      <picture>
+                      <img src="{{ mob.imageDev.url }}" class='img-fluid mx-auto d-block' alt="">
+                     </picture>
+                      {% else %}
+                        <br>
+                      {% endif %}
                       
                     </div>
                   </div>

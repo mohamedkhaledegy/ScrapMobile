@@ -12,31 +12,22 @@ def index(request):
     
     form = DeviceFilter()
     
-    devices = {
-            Device.objects.all()
-        }
-    if devices :
-        devices = {
-            Device.objects.filter(brand__name='Samsung')[:10],
-            Device.objects.filter(brand__name='Apple')[:10],
-            Device.objects.filter(brand__name='Huawei')[:10],
-            Device.objects.filter(brand__name='Oppo')[:10],
-            Device.objects.filter(brand__name='xiaomi')[:10],
-            Device.objects.filter(brand__name='Realme')[:10],
-        }
+    devices = Device.objects.all()[:200]
+    
     if request.GET:
         filterd_brands = DeviceFilter(request.GET)
+        devices = filterd_brands.qs
     else:
         filterd_brands = DeviceFilter()
-    devices_count = devices
-    devices = filterd_brands.qs
+        
+    devices_count = devices.count()
     context = {
         
         'filter': form,
         'devs' : devices ,
         'brand'  : Brand.objects.all() ,
         'filterd_devs' : filterd_brands , 
-        'devs_count' : 50 ,
+        'devs_count' : devices_count ,
             }
     return render(request , 'index.html',context)
 
