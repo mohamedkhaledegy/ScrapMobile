@@ -11,7 +11,7 @@ def index(request):
     #filterd_brands = Device.objects.filter(brand__slug=slug_samsung)[:10]
     
     form = DeviceFilter()
-    
+    filterd_devs = DeviceFilter()
     devices = Device.objects.all()[:200]
     
     if request.GET:
@@ -35,27 +35,37 @@ def auto_detect(request ):
     family = None
     brd = None
     mobmodel = None
+    mob = False
+    devv_last = None
+    brands = None
     if request.user_agent.is_mobile:
-        print(request.user_agent.device)
+        #print(request.user_agent.device)
+        #print(request.user_agent.device.brand)
+        #print(request.user_agent.device.model)
+        #print('Finished')
         family = request.user_agent.device.family    
         brd = request.user_agent.device.brand
         mobmodel = request.user_agent.device.model
+        if Device.objects.filter(modeldev__icontains=mobmodel).exists():
+            mob = True
         try:
-            device = Device.objects.filter(modeldev__contains=mobmodel)
+            device = Device.objects.filter(modeldev__icontains=mobmodel)
+            devv_last = device.last()
             print(device.count())
-            print(device.all())
         except:
             device = 'Not Found In Database'
+        print(mob)
     else:
         print(request.user_agent)
         device = 'PC'
     
-
     context = {
         'family' : family ,
         'brand' : brd ,
         'mobmodel':mobmodel ,
         'devs' : device ,
+        'mob' : mob ,
+        'mobily' : devv_last ,
     }
     return render(request , 'mobily.html' , context)
 

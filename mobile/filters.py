@@ -5,6 +5,7 @@ from .models import *
 
 class DeviceFilter(django_filters.FilterSet):
     price__gt = django_filters.NumberFilter(field_name='priceDev', lookup_expr='gt')
+    price__gt = django_filters.NumberFilter(field_name='priceDev', lookup_expr='gt')
     class Meta:
         model = Device
         fields = {'nameDev':['icontains'], 'brand__name':['exact'],}
