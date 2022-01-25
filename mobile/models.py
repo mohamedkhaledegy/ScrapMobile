@@ -165,10 +165,10 @@ class Spare(models.Model):
     slug = models.SlugField(blank=True, null=True)
     brand = models.ForeignKey(Brand,  blank=True, null=True, on_delete=models.PROTECT)
     device_main = models.ForeignKey(Device,related_name="Device_sets", blank=True, null=True, on_delete=models.PROTECT)
-    device_same = models.ManyToManyField(Device, verbose_name=_("Work For Mobiles"))
+    device_same = models.ManyToManyField(Device,blank=True, null=True, verbose_name=_("Work For Mobiles"))
     category = models.CharField( choices=spare_list , max_length=50, blank=True, null=True)
     quality = models.CharField( choices=spare_quality , max_length=50, blank=True, null=True)
-    warranty = models.IntegerField(default=1,  verbose_name=_("Warranty"))
+    warranty = models.IntegerField( default=1,  verbose_name=_("Warranty"))
     code = models.CharField(max_length=320 , blank=True , null=True, verbose_name=_("Code"))
     image = models.ImageField( upload_to=('Spare/Spare_img/'), verbose_name=_("Image Spare"), blank=True)
     price  = models.DecimalField(default=00.00,decimal_places=2, max_digits=20,  verbose_name=_("Price"))
@@ -177,7 +177,7 @@ class Spare(models.Model):
     model = models.CharField(max_length=200, blank=True, null=True, verbose_name=_("Model"))
     active = models.BooleanField(default=False,  verbose_name=_("Active"))
     faults = models.CharField(max_length=500 , blank=True , null=True , verbose_name=_("Faults"))
-    local_or_global = models.BooleanField(default=False,  verbose_name=_("Warranty in Egypt ?"))
+    local_warranty = models.BooleanField(default=False,  verbose_name=_("Warranty in Egypt ?"))
     
 
     def save(self , *args , **kwargs):

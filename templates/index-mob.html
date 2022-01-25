@@ -32,68 +32,34 @@
               <img src="{{ mobile.img_dev_full_1.url }}" class='img-fluid mx-auto d-block' alt="">
             </picture>
             
-          </div>
-          <div class="card-body">
-            <div class="bd bd-tabs">
-              <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                  <a class="nav-link active mobiletab" id="specifications-tab" 
-                  data-toggle="tab" href="#specifications" role="tab" 
-                  aria-controls="specifications" aria-selected="true">
-                    امكانيات
-                  </a>
-                </li>
-                <li class="nav-item " role="presentation">
-                  <a class="nav-link mobiletab" id="spare-tab" 
-                  data-toggle="tab" href="#spare" role="tab" 
-                  aria-controls="spare" aria-selected="false">
-                    قطع غيار
-                  </a>
-                </li>
-                <li class="nav-item " role="presentation">
-                  <a class="nav-link mobiletab" id="price-tab" 
-                  data-toggle="tab" href="#price" role="tab" 
-                  aria-controls="price" aria-selected="false">
-                    السعر
-                  </a>
-                </li>
-              </ul>
-
-              <div dir="ltr" class="tab-content text-left " id="myTabContent">
-                  {% include "devices/tab1-features.html" %}
-
-                <div class="tab-pane fade" id="spare" role="tabpanel" aria-labelledby="spare-tab">
-                  {% include "devices/tab2-spares.html" %}
+            <div>
+              <div class="d-flex align-items-start">
+                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                  <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">المواصفات</button>
+                  <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">السعر</button>
+                  <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">قطع غيار</button>
+                  <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">اكسسوارات</button>
+                  <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">اكسسوارات</button>
+                  <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">اكسسوارات</button>
+                
                 </div>
-                <div class="tab-pane fade" id="price" role="tabpanel" aria-labelledby="price-tab">
-                  {% if mobile.price %}
-                    {{mobile.price}}
-                  {% else %}
-                    <div class="row">
-                      <div class="col">
-                        <h4> No Price Detected </h4>
-                      </div>
-                    </div>
-                  {% endif %}
+                <div class="tab-content" id="v-pills-tabContent">
+                  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">Home</div>
+                  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">profile</div>
+                  <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">messages</div>
+                  <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">settings</div>
                 </div>
-              
               </div>
             </div>
           </div>
+          <!-- Specif  -->
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    {% for spare in spr %}
-    <div class="col">
-      <div class="card">
-        {{spare.name}}
-      </div>
-    </div>
-    {% endfor %}
+
   </div>
 </section>
 
 {% endblock content %}
-    

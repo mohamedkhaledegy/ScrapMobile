@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_countries',
     'django_filters',
     'django_user_agents',
+    'django_extensions',
 
 ]
 

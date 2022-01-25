@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render , get_object_or_404
 from .models import *
 from .filters import *
@@ -120,7 +121,7 @@ def about (request):
 
 
 
-def test1(request):
+def test2(request):
     
     samsung_mobs = Device.objects.filter(brand__name='Samsung')
     apple_mobs = Device.objects.filter(brand__name='Apple')
@@ -143,6 +144,11 @@ def test1(request):
                'honor_mobs':honor_mobs ,
     }
     return render(request,'pages/test1.html' , context)
+
+def test1(request):
+    context = {'test':'Hello' }
+    return render(request,'examples/test-site1.html',context)
+    
 
 def get_mob(request , slug):
     device = get_object_or_404(Device , slug_dev=slug)
